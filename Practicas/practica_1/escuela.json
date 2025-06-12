@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "Peter",
+    "apellido": "Parker",
+    "edad": 24,
+    "asignatura": "Python"
+  },
+  {
+    "nombre": "Peter",
+    "apellido": "Parker",
+    "edad": 24,
+    "asignatura": "PHP"
+  }
+]
