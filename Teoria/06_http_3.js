@@ -27,7 +27,6 @@ const server = http.createServer((req, res) => {
         title = "404 Not Found" // Titulo de la pagina
         h1="<h1>Pagina no encontrada</h1>"; // Escribir un encabezado HTML
         p="<p>La pagina que buscas no existe.<br>Vuelve pagina de inicio desde aqui.<br> <a href='/'>Volver al inicio🏡</a></p>"; // Incluir un enlace para volver a la página de inicio
-
     };
     // Definir el contenido HTML de la respuesta
 const html = `<!DOCTYPE html>

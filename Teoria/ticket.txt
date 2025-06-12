@@ -1,0 +1,10 @@
+Pizzeria Nodini
+***************
+Has elegido pizza de Masa Espelta con los siguientes ingredientes:
+Mozzarella coste: 2.50€
+Prosciutto coste: 2.75€
+nudja coste: 3.70€
+Parmigiano coste: 3.00€
+
+Importe total: 17.95€
+
