@@ -75,14 +75,14 @@ function borrar(nombre, apellido) {
         return;
     }
 
-    if (grabarDatos(datosFiltrados)) {
+    if (grabar(datosFiltrados)) {
         console.log(`Alumno ${nombre} ${apellido} eliminado de todas las asignaturas`);
     }
 }
 
 // Función para mostrar todos los alumnos
 function mostrarTodos() {
-    const datos = leerDatos();
+    const datos = leer();
 
     if (datos.length === 0) {
         console.log("No hay alumnos matriculados");
