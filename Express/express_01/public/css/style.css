@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    text-align: center;
+    
+}
+p{
+    text-align: center;
+}
+img{
+    max-width: 90%;
+    margin: 1rem auto;
+    display: block;
+}

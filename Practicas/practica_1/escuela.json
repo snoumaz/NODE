@@ -2,13 +2,25 @@
   {
     "nombre": "Peter",
     "apellido": "Parker",
-    "edad": 24,
-    "asignatura": "Python"
+    "edad": 22,
+    "asignatura": "php"
   },
   {
     "nombre": "Peter",
     "apellido": "Parker",
+    "edad": 22,
+    "asignatura": "python"
+  },
+  {
+    "nombre": "Peter",
+    "apellido": "Parker",
+    "edad": 22,
+    "asignatura": "sql"
+  },
+  {
+    "nombre": "Peter",
+    "apellido": "Jamal",
     "edad": 24,
-    "asignatura": "PHP"
+    "asignatura": "sql"
   }
 ]
