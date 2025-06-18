@@ -1,0 +1,22 @@
+{
+  "name": "express_03",
+  "version": "1.0.0",
+  "description": "Servidor pruebas ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snoumaz/NODE.git"
+  },
+  "author": "Snou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snoumaz/NODE/issues"
+  },
+  "homepage": "https://github.com/snoumaz/NODE#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
