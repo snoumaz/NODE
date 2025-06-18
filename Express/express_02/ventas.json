@@ -70,6 +70,7 @@
   { "mes": "Sep", "venta": 122, "anyo": 2024, "pais": "Francia" },
   { "mes": "Oct", "venta": 114, "anyo": 2024, "pais": "Francia" },
   { "mes": "Nov", "venta": 71, "anyo": 2024, "pais": "Francia" },
-  { "mes": "Dic", "venta": 91, "anyo": 2024, "pais": "Francia" }
+  { "mes": "Dic", "venta": 91, "anyo": 2024, "pais": "Francia" },
+  { "mes": "Ene", "venta": 5000, "anyo": 2025, "pais": "Andorra"}
 ]
 
