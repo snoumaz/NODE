@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel's Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header><h1>Express travels</h1></header>
+    <Main>
+        <section>
+            <h2>Añadir Destino</h2>
+            <form action="/insert" method="post">
+                <div>
+                    <label for="ruta">Ruta:</label>
+                    <input type="text" name="ruta" id="ruta">
+                </div>
+                <div>
+                    <label for="lugar">Lugar:</label>
+                    <input type="text" name="lugar" id="lugar">
+                </div>
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre">
+                </div>
+                <div>
+                    <label for="descripcion">Descripcion:</label>
+                    <input type="text" name="descripcion" id="descripcion">
+                </div>
+                <div>
+                    <label for="precio">Precio:</label>
+                    <input type="text" name="precio" id="precio">
+                </div>
+                <div>
+                    <label for="img">Ruta de la imagen:</label>
+                    <input type="text" name="img" id="img">
+                </div>
+                <div id="buttons">
+                    <button type="submit">Añadir</button>
+                    <button type="reset">Borrar</button>
+                </div>
+
+            </form>
+        </section>
+        <section>
+            <table>
+                <tr>
+                    <th>Ruta</th>
+                    <th>Lugar</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                  <% jsonData.forEach(travel =>{ %>
+                <tr>
+                    <td><%= travel.ruta %></td>
+                    <td><%= travel.lugar %></td>
+                    <td><%= travel.nombre %></td>
+                    <td><%= travel.precio %></td>
+                    <td><button title="Editar viaje">🖊</button></td>
+                    <td><button title="Borrar viaje">❌</button></td>
+                </tr>
+            <% }) %>
+            </table>
+        </section>
+    </Main>
+</body>
+</html>

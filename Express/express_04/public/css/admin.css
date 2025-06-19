@@ -1,0 +1,107 @@
+/* Variables CSS */
+:root {
+    --max-xciento: 100%;
+    --max-vh: 100vh;
+    --content-padding: 2rem;
+    --content-padding-xxl: 3rem;
+    --content-padding-xl: 2.5rem;
+    --content-padding-l: 1.75rem;
+    --content-padding-m: 1.5rem;
+    --content-padding-s: 1rem;
+    --content-padding-xs: 0.5rem;
+    --content-padding-xss: 0.25rem;
+    --content-padding-xxs: 0.125rem;
+    --min-side-padding: 1rem;
+    --font-primary: Arial, sans-serif;
+    --font-size-base: 1rem;
+    --line-height-base: 1.5;
+    --bg-color-primary: #f0f0f0;
+    --bg-color-secundary: grey;
+    --hover-color: #ccc;
+    --text-primary: #000000;
+    --text-secundary: white;
+    --accent-color: #666;
+    --accent-color-1: rgb(86, 103, 138);
+    --bg-secondary: #fff;
+    --bg-accent: #f5f5f5;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+html {
+    width: var(--max-xciento);
+    height: var(--max-xciento);
+}
+
+body {
+    min-height: var(--max-vh);
+    width: var(--max-xciento);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--accent-color-1);
+    font-size: var(--content-padding-l);
+    text-align: center;
+    margin: var(--content-padding-xl) 0;
+}
+main{
+    max-width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--content-padding-l);
+    table{
+        width: var(--max-xciento);
+        tr:nth-child(even) {
+            background-color: darksalmon;
+        }
+        td{
+            padding: var(--content-padding-xs);
+        }
+    }
+    form{
+        padding: var(--content-padding-xxs);
+        border: 1px solid var(--text-primary);
+        border-radius: 10px;
+        label{
+            display: block;
+        }
+        input{
+            width: var(--max-xciento);
+            padding: var(--content-padding-xs);
+        }
+        div{
+            margin: var(--content-padding-xs);
+        }
+        #buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            padding: var(--content-padding-xss);
+            font-size: var(--content-padding-s);
+            border-radius: 10px;
+            border: none;
+        }
+        button[type="submit"]{
+            background-color: lightgreen;
+
+        }
+         button[type="reset"]{
+            background-color: lightsalmon;
+            
+        }
+    }
+}
