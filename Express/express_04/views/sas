@@ -1,0 +1,33 @@
+ <section id="update">
+        <h2>Modifica los datos :</h2> 
+        <form name="update">
+          <input type="hidden" id="id_update" name="id_update">
+          <div>
+            <label for="ruta_update">Ruta (URL) : </label>
+            <input type="text" id="ruta_update" name="ruta_update" />
+          </div>
+          <div>
+            <label for="lugar_update">Lugar : </label>
+            <input type="text" id="lugar_update" name="lugar_update" />
+          </div>
+            <label for="nombre_update">Nombre del viaje: </label>
+            <input type="text" id="nombre_update" name="nombre_update" />
+          </div>
+          <div>
+            <label for="descripcion_update">Descripción : </label>
+            <input type="text" id="descripcion_update" name="descripcion_update" />
+          </div>
+                    </div>
+                      <label for="precio_update">Precio : </label>
+            <input type="text" id="precio_update" name="precio_update" />
+          </div>
+          <div>
+            <label for="img_update">Ruta de la imagen : </label>
+            <input type="text" id="img_update" name="img_update" />
+          </div>
+          <div id="buttons">
+            <button type="submit">Aceptar</button>
+            <button type="reset">Borrar</button>
+          </div>
+        </form>
+      </section>

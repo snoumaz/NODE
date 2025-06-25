@@ -57,7 +57,47 @@ app.post('/insert',(req,res)=>{
     res.redirect("/admin")
 })
 
-app.use( (req, res) =>{ 
-    res.status(404).sendFile(path.join(__dirname,"public","404.html"))
+app.put("/update/:id", (req, res) => {
+    // console.log(req.params.id);
+    // console.log(req.body);
+    const idUpdate = req.params.id
+    const travelChanged = req.body
+
+    const newData = jsonData.filter(travel => travel.id != idChange)
+
+    if (travelChanged.ruta[0] != "/") travelChanged.ruta = "/" + travelChanged.ruta    
+    // El precio viene del formulario como string, hay que pasarlo a número
+    travelChanged.precio = parseFloat(travelChanged.precio)
+    newData.push(travelChanged)
+    console.log(newData)
+    fs.writeFileSync(path.join(__dirname, "data", "travels.json"), JSON.stringify(newData, null, 2), "utf-8")
+    res.redirect("/admin")
 })
+
+app.delete("/delete/:id", (req, res) => {
+    const idDelete = req.params.id;
+    // Filtra los viajes que no coinciden con el id a eliminar
+    const newJsonData = jsonData.filter(travel => travel.id != idDelete);
+    // Actualiza el archivo
+    fs.writeFileSync(path.join(__dirname, "data", "travels.json"),
+        JSON.stringify(newJsonData, null, 2),
+        "utf-8"
+    );
+    // Actualiza el array en memoria
+    jsonData.length = 0;
+    newJsonData.forEach(travel => jsonData.push(travel));
+    res.json({ });
+});
+
+// Middleware para manejar rutas no existentes y mostrar /404
+app.use((req, res) => {
+    res.status(404).redirect('/404');
+});
+
+// Ruta para mostrar la página 404
+app.get('/404', (req, res) => {
+    res.status(404).render('404');
+});
+
+
 app.listen(port, () => console.log(`Servidor iniciado en http://localhost:${port}`))
