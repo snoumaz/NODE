@@ -1,22 +1,27 @@
 {
-  "name": "express_04",
+  "name": "node_04_ejs_2",
   "version": "1.0.0",
-  "description": "Server dinamico",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch app.js"
+  "description": "Aplicación de ejemplo de uso de Node y EJS",
+  "keywords": [
+    "Node",
+    "Express",
+    "EJS"
+  ],
+  "homepage": "https://github.com/classesdeferran/stucom_ej_2#readme",
+  "bugs": {
+    "url": "https://github.com/classesdeferran/stucom_ej_2/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snoumaz/NODE.git"
+    "url": "git+https://github.com/classesdeferran/stucom_ej_2.git"
   },
-  "author": "Snou",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/snoumaz/NODE/issues"
+  "author": "Ferran",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js"
   },
-  "homepage": "https://github.com/snoumaz/NODE#readme",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^5.1.0"

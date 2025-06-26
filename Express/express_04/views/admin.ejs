@@ -8,75 +8,77 @@
     <script src="js/admin.js" defer></script>
 </head>
 <body>
-    <header><h1>Express travels</h1></header>
-    <Main>
-         <section id="update">
-        <h2>Modifica los datos :</h2> 
-        <form id="dataUpdate">
-          <input type="hidden" id="id_update" name="id_update">
-          <div>
-            <label for="ruta_update">Ruta (URL) : </label>
-            <input type="text" id="ruta_update" name="ruta_update" />
-          </div>
-          <div>
-            <label for="lugar_update">Lugar : </label>
-            <input type="text" id="lugar_update" name="lugar_update" />
-          </div>
-            <label for="nombre_update">Nombre del viaje: </label>
-            <input type="text" id="nombre_update" name="nombre_update" />
-          </div>
-          <div>
-            <label for="descripcion_update">Descripción : </label>
-            <input type="text" id="descripcion_update" name="descripcion_update" />
-          </div>
-                    </div>
-                      <label for="precio_update">Precio : </label>
-            <input type="text" id="precio_update" name="precio_update" />
-          </div>
-          <div>
-            <label for="img_update">Ruta de la imagen : </label>
-            <input type="text" id="img_update" name="img_update" />
-          </div>
-          <div id="buttons">
-            <button type="submit">Aceptar</button>
-            <button type="reset">Borrar</button>
-          </div>
-        </form>
-      </section>
+    <header><h1>Express Travels</h1></header>
+    <main>
         <section id="insert">
-            <h2>Añadir Destino</h2>
-            <form action="/insert" method="post">
+            <h2>Añadir destino</h2>
+            <form action="/insert" method="POST">
                 <div>
-                    <label for="ruta">Ruta:</label>
-                    <input type="text" name="ruta" id="ruta">
+                    <label for="ruta">Ruta :</label>
+                    <input type="text" id="ruta" name="ruta">
                 </div>
-                <div>
-                    <label for="lugar">Lugar:</label>
-                    <input type="text" name="lugar" id="lugar">
+                                <div>
+                    <label for="lugar">Lugar :</label>
+                    <input type="text" id="lugar" name="lugar">
                 </div>
-                <div>
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" id="nombre">
+                                <div>
+                    <label for="nombre">Nombre :</label>
+                    <input type="text" id="nombre" name="nombre">
                 </div>
-                <div>
-                    <label for="descripcion">Descripcion:</label>
-                    <input type="text" name="descripcion" id="descripcion">
+                                <div>
+                    <label for="descripcion">Descripción :</label>
+                    <input type="text" id="descripcion" name="descripcion">
                 </div>
-                <div>
-                    <label for="precio">Precio:</label>
-                    <input type="text" name="precio" id="precio">
+                                </div>
+                                <div>
+                    <label for="precio">Precio :</label>
+                    <input type="text" id="precio" name="precio">
                 </div>
-                <div>
-                    <label for="img">Ruta de la imagen:</label>
-                    <input type="text" name="img" id="img">
+                                <div>
+                    <label for="img">Ruta de la imagen :</label>
+                    <input type="text" id="img" name="img">
                 </div>
                 <div id="buttons">
-                    <button type="submit">Añadir</button>
+                    <button type="submit">Aceptar</button>
                     <button type="reset">Borrar</button>
                 </div>
-
             </form>
         </section>
+        <section id="update">
+            <h2>Modificar datos</h2>
+            <form id = "dataUpdate">
+                <input type="hidden" id="update_id" name="update_id">
+                <div>
+                    <label for="update_ruta">Ruta :</label>
+                    <input type="text" id="update_ruta" name="update_ruta">
+                </div>
+                                <div>
+                    <label for="update_lugar">Lugar :</label>
+                    <input type="text" id="update_lugar" name="update_lugar">
+                </div>
+                                <div>
+                    <label for="update_nombre">Nombre :</label>
+                    <input type="text" id="update_nombre" name="update_nombre">
+                </div>
+                                <div>
+                    <label for="update_descripcion">Descripción :</label>
+                    <input type="text" id="update_descripcion" name="update_descripcion">
+                </div>
+                                </div>
+                                <div>
+                    <label for="update_precio">Precio :</label>
+                    <input type="text" id="update_precio" name="update_precio">
+                </div>
+                                <div>
+                    <label for="update_img">Ruta de la imagen :</label>
+                    <input type="text" id="update_img" name="update_img">
+                </div>
+                <div id="buttons">
+                    <button type="submit">Aceptar</button>
+                    <button type="reset">Borrar</button>
+                </div>
+            </form>
+        </section>     
         <section>
             <table>
                 <tr>
@@ -87,19 +89,19 @@
                     <th></th>
                     <th></th>
                 </tr>
-                  <% jsonData.forEach(travel =>{ %>
+                <% jsonData.forEach( travel => { %>
                 <tr>
                     <td><a href="<%= travel.ruta %>"><%= travel.ruta %></a></td>
                     <td><%= travel.lugar %></td>
                     <td><%= travel.nombre %></td>
                     <td><%= travel.precio %></td>
-                    <td><button title="Editar viaje"onclick="editTravel(`<%= JSON.stringify(travel) %>`)">🖊</button></td>
-                    <td><button title="Borrar viaje"onclick="deleteTravel(`<%= travel.id %>`)">❌</button></td>
-                </tr>
+                    <td><button title="Editar viaje" onclick="editTravel('<%= JSON.stringify(travel) %> ')">✏️</button></td>
+                    <td><button title="Borrar viaje" onclick="deleteTravel(`<%= travel.id %>`)">❌</button></td>
+                    
             <% }) %>
+
             </table>
         </section>
-    </Main>
+    </main>
 </body>
-
 </html>
