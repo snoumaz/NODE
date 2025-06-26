@@ -1,29 +1,38 @@
 {
-  "name": "node_04_ejs_2",
+  "name": "express-travels-crud",
   "version": "1.0.0",
-  "description": "Aplicación de ejemplo de uso de Node y EJS",
+  "description": "Aplicación CRUD para gestión de viajes usando Node.js, Express y EJS",
   "keywords": [
-    "Node",
+    "Node.js",
     "Express",
-    "EJS"
+    "EJS",
+    "CRUD",
+    "Travels",
+    "REST API",
+    "Web Application"
   ],
-  "homepage": "https://github.com/classesdeferran/stucom_ej_2#readme",
+  "homepage": "https://github.com/snoumaz/NODE#readme",
   "bugs": {
-    "url": "https://github.com/classesdeferran/stucom_ej_2/issues"
+    "url": "https://github.com/snoumaz/NODE/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/classesdeferran/stucom_ej_2.git"
+    "url": "git+https://github.com/snoumaz/NODE.git"
   },
   "license": "ISC",
   "author": "Ferran",
   "type": "commonjs",
   "main": "app.js",
   "scripts": {
-    "start": "node --watch app.js"
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "prod": "NODE_ENV=production node app.js"
   },
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

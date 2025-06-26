@@ -1,69 +1,376 @@
+/* ==========================================
+   ESTILOS DEL PANEL DE ADMINISTRACIÓN
+   ========================================== */
+
+/* ==========================================
+   RESET Y ESTILOS GLOBALES
+   ========================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* ==========================================
+   TÍTULO PRINCIPAL
+   ========================================== */
 h1 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: steelblue;
-  font-size: 1.8rem;
+  color: #2c3e50;
+  font-size: 2.5rem;
   text-align: center;
   margin: 2rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
+h1::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  margin: 1rem auto;
+  border-radius: 2px;
+}
+
+/* ==========================================
+   LAYOUT PRINCIPAL
+   ========================================== */
 main {
-  max-width: 90%;
+  max-width: 95%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 2rem;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+/* ==========================================
+   TABLA DE DATOS - MODERNA Y ELEGANTE
+   ========================================== */
+.table-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.table-container:hover {
+  transform: translateY(-5px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+
+  thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.8rem;
+    }
+  }
+
+  tbody {
+    tr {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #f0f0f0;
+
+      &:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      &:hover {
+        background-color: #e3f2fd;
+        transform: scale(1.01);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      td {
+        padding: 1rem;
+        vertical-align: middle;
+        border-right: 1px solid #f0f0f0;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================
+   BOTONES DE ACCIÓN EN LA TABLA
+   ========================================== */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btn-edit, .btn-delete {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit {
+  background: linear-gradient(45deg, #ffd54f, #ffb74d);
+  color: #333;
+}
+
+.btn-edit:hover {
+  background: linear-gradient(45deg, #ffcc02, #ff9800);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+}
+
+.btn-delete {
+  background: linear-gradient(45deg, #ff5252, #f44336);
+  color: white;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(45deg, #d32f2f, #c62828);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
+}
+
+/* ==========================================
+   FORMULARIOS - MODERNOS Y FUNCIONALES
+   ========================================== */
+.form-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+}
+
+.form-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+form {
+  padding: 2rem;
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    font-family: inherit;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  #buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+  }
+
+  button[type="submit"] {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    color: white;
+  }
+
+  button[type="submit"]:hover {
+    background: linear-gradient(45deg, #27ae60, #229954);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+  }
+
+  button[type="reset"] {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+  }
+
+  button[type="reset"]:hover {
+    background: linear-gradient(45deg, #c0392b, #a93226);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   RESPONSIVIDAD PARA DISPOSITIVOS MÓVILES
+   ========================================== */
+@media (max-width: 1024px) {
+  main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 
   table {
-    width: 100%;
+    font-size: 0.8rem;
+  }
 
-    tr:nth-child(even) {
-      background-color: darksalmon;
-    }
-    td {
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    max-width: 98%;
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+  }
+
+  table {
+    font-size: 0.7rem;
+
+    th, td {
       padding: 0.5rem;
     }
   }
 
   form {
-    padding: 0.5rem;
-    border: 1px solid black;
-    border-radius: 10px;
-
-    label {
-      display: block;
-    }
-    input {
-      padding: 0.4rem;
-      width: 100%;
-    }
-    div {
-      margin: 0.8rem;
-    }
-
-    #buttons {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      border: none;
-    }
-
-    button[type="submit"] {
-      background-color: lightgreen;
-    }
-        button[type="reset"] {
-      background-color: lightsalmon;
-    }
+    padding: 1rem;
   }
+
+  form button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  #buttons {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================
+   EFECTOS ADICIONALES Y ANIMACIONES
+   ========================================== */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table-container, .form-container {
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Efecto de carga */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }

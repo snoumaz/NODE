@@ -1,0 +1,75 @@
+# ==========================================
+# ARCHIVO .GITIGNORE PARA PROYECTO NODE.JS
+# ==========================================
+
+# ==========================================
+# DEPENDENCIAS Y MÓDULOS
+# ==========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ==========================================
+# VARIABLES DE ENTORNO Y CONFIGURACIÓN
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==========================================
+# ARCHIVOS DE SISTEMA Y EDITORES
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ==========================================
+# IDE Y EDITORES
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ==========================================
+# LOGS Y ARCHIVOS TEMPORALES
+# ==========================================
+logs
+*.log
+pids
+*.pid
+*.seed
+*.pid.lock
+tmp/
+temp/
+
+# ==========================================
+# ARCHIVOS DE DISTRIBUCIÓN Y BUILD
+# ==========================================
+dist/
+build/
+.cache/
+
+# ==========================================
+# COVERAGE Y TESTING
+# ==========================================
+coverage/
+.nyc_output/
+.coverage/
+
+# ==========================================
+# ARCHIVOS ESPECÍFICOS DEL PROYECTO
+# ==========================================
+# Agregar aquí archivos específicos que no deben ser versionados
+# Ejemplo: archivos de backup, datos sensibles, etc.
+
