@@ -6,7 +6,6 @@ const configConnection = {
     password: process.env.PASS_DB,
     database: process.env.DATABASE,
     port: process.env.PORT_DB
-
 };
 
 const connection = mysql.createConnection(configConnection)
@@ -15,5 +14,4 @@ const selectBarcelona = 'SELECT * FROM city WHERE Name = "Barcelona"'
 connection.query(selectBarcelona,(err,result, fields)=> {
     if (err) throw err
     console.table(result);
-
 })
