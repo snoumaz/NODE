@@ -19,7 +19,17 @@ div{
 h1{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2.5rem;
-    color: white;
+    display: flex;
+    align-items: center;
+    
+    img{
+        height: 2.5rem;
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
+    }
     span{
         color: #f8c601;
     }
@@ -34,7 +44,7 @@ main{
 .card{
     display: flex;
     gap: 1rem;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
      div{
         max-width: 200px;
@@ -60,4 +70,29 @@ main{
     }
 
 
+}
+
+.peli{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    h2{
+        font-size: 1.5rem;
+        border-bottom: 2px solid crimson;
+    }
+
+    span{
+        font-size: 1.2rem;
+        color: crimson;
+        font-weight: 700;
+    }
+    p{
+        margin: 1rem 0;
+        font-size: 1.1rem;
+    }
+
+    img{
+        width: 100%;
+    }
 }

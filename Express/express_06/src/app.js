@@ -27,22 +27,45 @@ app.set("views", path.join(__dirname, "..", "views"));
 // Route
 app.get('/', (req, res) => {
     const query = "SELECT * FROM pelis";
+    let subtitulo = "Todas Las pelis"
     connection.query(query, (err, result, fields) => {
         if (err) throw err;
-        res.render("index", {result});
+        res.render("index", {result, subtitulo});
         console.log(result);
     });
 });
 
 app.get('/peli/:id',(req,res)=>{
     const id = req.params.id
-    const query = "SELECT * FROM pelis";
+    const query = `SELECT d.nombre_director, g.nombre_genero,p.fecha,p.titulo_peli,p.valoracion,p.img_peli,p.sinopsis
+    FROM directores d
+    NATURAL JOIN pelis p
+    NATURAL JOIN pelis_generos pg
+    NATURAL JOIN generos g
+    WHERE p.id_peli = ${id};`;
     connection.query(query, (err, result, fields) => {
         if (err) throw err;
-        res.render("index", {result});
-    res.render()
+        res.render("peli", {result});
+        console.log(result);
 })
 });
+
+app.get("/genero/:nombre",(req,res)=>{
+    let genero = req.params.nombre.replaceAll("-"," ")
+    let subtitulo = genero
+    const query = `SELECT g.nombre_genero,p.fecha,p.titulo_peli,p.img_peli,p.id_peli
+    FROM directores d
+    NATURAL JOIN pelis p
+    NATURAL JOIN pelis_generos pg
+    NATURAL JOIN generos g
+    WHERE g.nombre_genero = '${genero}';`;
+    connection.query(query, (err, result, fields) => {
+        if (err) throw err;
+        res.render("index", {result,subtitulo});
+        console.log(result);
+})
+
+})
 
 // Start server
 app.listen(PORT, () => {

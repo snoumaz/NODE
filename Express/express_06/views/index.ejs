@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peliculas</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<%- include("templates/head") %>
 <body>
- <%- include("templates/header") %>
-    
-    <Main>
-        <h2>Todas las Peliculas</h2>
-        <div class="card">
-            <% result.forEach(peli =>{ %>
-                <a href="/peli/<%= peli.id_peli%>">
-                    <div>
-                        
-                        <img src="<%= peli.img_peli %>" alt="<%= peli.titulo_peli %>"> 
-                        <h3><%= peli.titulo_peli%></h3>
-                        <p><%= peli.fecha %></p>
-                    </div>
-                </a>
-           <% }) %>
-        </div>
-    </Main>
+  <%- include("templates/header") %>
+
+  <main>
+  
+  <h2><%= subtitulo %></h2>
+   
+
+
+    <div class="card">
+      <% result.forEach(peli => { %>
+        <a href="/peli/<%= peli.id_peli %>">
+          <div>
+            <img src="<%= peli.img_peli %>" alt="<%= peli.titulo_peli %>"> 
+            <h3><%= peli.titulo_peli %></h3>
+            <p><%= peli.fecha %></p>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  </main>
 </body>
 </html>

@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peliculas</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<%- include("templates/head") %>
 <body>
- <%- include("templates/header") %>
-    
-    <Main>
-        <h2><%=  %></h2>
-       
-    </Main>
+  <%- include("templates/header") %>
+
+  <main>
+    <div class="peli">
+      <section>
+        <h2><%= result[0].titulo_peli %></h2>
+        <p>Director <span><%= result[0].nombre_director %></span></p>
+        <p>Año <span><%= result[0].fecha %></span></p>
+        
+        <p>Géneros: 
+          <% result.forEach(peli => { 
+               let genero = peli.nombre_genero.replaceAll(" ", "-"); %>
+            <a href="/genero/<%= genero %>"><span><%= peli.nombre_genero %></span></a> 
+          <% }); %>
+        </p>
+
+        <p>Valoración: <span><%= result[0].valoracion %></span></p>
+        <p>Sinopsis:</p>
+        <p><%= result[0].sinopsis %></p>
+      </section>
+
+      <section>
+        <img src="<%= result[0].img_peli %>" alt="Poster pelicula <%= result[0].titulo_peli %>">
+      </section>
+    </div>
+  </main>
 </body>
 </html>
