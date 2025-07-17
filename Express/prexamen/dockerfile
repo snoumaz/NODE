@@ -1,0 +1,35 @@
+FROM node:20
+
+# Instalar MySQL Server
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server && \
+    rm -rf /var/lib/apt/lists/*
+
+# Desactivar secure_file_priv para permitir LOAD DATA INFILE desde cualquier ruta
+RUN echo "[mysqld]\nsecure_file_priv=" > /etc/mysql/mysql.conf.d/docker.cnf
+
+# Crear directorio de trabajo de Node.js
+WORKDIR /usr/src/app
+
+# Copiar dependencias de Node.js e instalar
+COPY package*.json ./
+RUN npm install
+
+# Copiar el resto del proyecto (código fuente, públicos, etc.)
+COPY . .
+
+# Copiar archivos de datos (SQL, CSV, TXT)
+COPY ./sql/init.sql /docker-entrypoint-initdb.d/init.sql
+COPY ./sql/alumnos.txt /usr/src/app/sql/alumnos.txt
+COPY ./sql/telefonosContacto.csv /usr/src/app/sql/telefonosContacto.csv
+COPY ./sql/impartir.txt /usr/src/app/sql/impartir.txt
+
+# Copiar script de arranque y dar permisos
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Exponer puertos de Node.js y MySQL
+EXPOSE 3000 3306
+
+# Comando por defecto
+CMD ["/start.sh"]
