@@ -1,35 +1,38 @@
-FROM node:20
+FROM ubuntu:22.04
 
-# Instalar MySQL Server
+ENV DEBIAN_FRONTEND=noninteractive
+ENV MYSQL_ROOT_PASSWORD=root
+
+# Instalar Node.js 20 y MySQL Server
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server && \
+    apt-get install -y curl gnupg lsb-release ca-certificates software-properties-common && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs mysql-server && \
     rm -rf /var/lib/apt/lists/*
 
-# Desactivar secure_file_priv para permitir LOAD DATA INFILE desde cualquier ruta
-RUN echo "[mysqld]\nsecure_file_priv=" > /etc/mysql/mysql.conf.d/docker.cnf
+# Desactivar secure_file_priv
+RUN echo "[mysqld]\nsecure_file_priv=" > /etc/mysql/mysql.conf.d/99-insecure.cnf
 
-# Crear directorio de trabajo de Node.js
+# Crear directorio de trabajo
 WORKDIR /usr/src/app
 
-# Copiar dependencias de Node.js e instalar
+# Instalar dependencias de Node.js
 COPY package*.json ./
 RUN npm install
 
-# Copiar el resto del proyecto (código fuente, públicos, etc.)
+# Copiar el resto del proyecto
 COPY . .
 
-# Copiar archivos de datos (SQL, CSV, TXT)
-COPY ./sql/init.sql /docker-entrypoint-initdb.d/init.sql
+# Copiar archivos de datos
+COPY ./sql/init.sql /usr/src/app/sql/init.sql
 COPY ./sql/alumnos.txt /usr/src/app/sql/alumnos.txt
 COPY ./sql/telefonosContacto.csv /usr/src/app/sql/telefonosContacto.csv
 COPY ./sql/impartir.txt /usr/src/app/sql/impartir.txt
 
-# Copiar script de arranque y dar permisos
+# Copiar script de inicio y dar permisos
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-# Exponer puertos de Node.js y MySQL
 EXPOSE 3000 3306
 
-# Comando por defecto
 CMD ["/start.sh"]
