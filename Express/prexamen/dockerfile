@@ -5,13 +5,13 @@ ENV MYSQL_ROOT_PASSWORD=root
 
 # Instalar Node.js 20 y MySQL Server
 RUN apt-get update && \
-    apt-get install -y curl gnupg lsb-release ca-certificates software-properties-common && \
+    apt-get install -y curl gnupg lsb-release ca-certificates software-properties-common dos2unix && \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs mysql-server && \
     rm -rf /var/lib/apt/lists/*
 
-# Desactivar secure_file_priv
-RUN echo "[mysqld]\nsecure_file_priv=" > /etc/mysql/mysql.conf.d/99-insecure.cnf
+# Configurar MySQL para Docker
+RUN echo "[mysqld]\nsecure_file_priv=\nbind-address=0.0.0.0" > /etc/mysql/mysql.conf.d/99-docker.cnf
 
 # Crear directorio de trabajo
 WORKDIR /usr/src/app
@@ -29,10 +29,20 @@ COPY ./sql/alumnos.txt /usr/src/app/sql/alumnos.txt
 COPY ./sql/telefonosContacto.csv /usr/src/app/sql/telefonosContacto.csv
 COPY ./sql/impartir.txt /usr/src/app/sql/impartir.txt
 
+# Procesar archivos de texto para asegurar formato correcto
+RUN dos2unix /usr/src/app/sql/init.sql 2>/dev/null || true && \
+    dos2unix /usr/src/app/sql/alumnos.txt 2>/dev/null || true && \
+    dos2unix /usr/src/app/sql/telefonosContacto.csv 2>/dev/null || true && \
+    dos2unix /usr/src/app/sql/impartir.txt 2>/dev/null || true
+
+# Crear archivo .env con variables de entorno
+RUN echo -e "DB_HOST=localhost\nDB_USER=root\nDB_PASS=root\nDB_PORT=3306\nDB_NAME=Facultad" > /usr/src/app/.env
+
 # Copiar script de inicio y dar permisos
 COPY start.sh /start.sh
-RUN chmod +x /start.sh
+RUN chmod +x /start.sh && \
+    dos2unix /start.sh 2>/dev/null || true
 
-EXPOSE 3000 3306
+EXPOSE 3002 3306
 
 CMD ["/start.sh"]
