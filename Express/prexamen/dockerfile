@@ -21,6 +21,18 @@ COPY package*.json ./
 RUN npm install
 
 # Copiar el resto del proyecto
+
+
+
+
+
+
+
+
+
+
+
+
 COPY . .
 
 # Copiar archivos de datos
